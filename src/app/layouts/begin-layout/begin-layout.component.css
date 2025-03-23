@@ -1,0 +1,26 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh; /* Garante que ocupa toda a altura */
+    background: radial-gradient(
+        circle at center,  
+        var(--background-color) 20%,  /* Cor central */
+        var(--background-color-secondary) 60%,  /* Transição suave */
+        var(--background-color-tertiary) 100% /* Extremidades */
+    );
+    overflow: hidden; 
+    transition: background 0.5s ease-in-out; 
+
+}
+
+.content-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}

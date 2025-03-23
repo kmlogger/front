@@ -1,0 +1,118 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; 
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@keyframes glowing-border {
+    0% {
+        border-image-source: linear-gradient(90deg, #7B00FF, #FF00FF);
+        border-image-slice: 1;
+    }
+    50% {
+        border-image-source: linear-gradient(90deg, #FF00FF, #7B00FF);
+        border-image-slice: 1;
+    }
+    100% {
+        border-image-source: linear-gradient(90deg, #7B00FF, #FF00FF);
+        border-image-slice: 1;
+    }
+}
+
+:root {
+    --primary-color: #6200ea;
+    --secondary-color: #6000e770;
+    --background-color: #e4dfdfef;  
+    --background-color-secondary: #c2bcbcec;
+    --background-color-tertiary: #aaa7a7c7;
+    --text-color: #000000;
+    --input-background: #f0f0f0;
+    --title-color: #6200ea;
+    --input-text: #000000;
+}
+
+/* 🌙 Tema Escuro */
+.dark-theme {
+    --primary-color: #9e32e5;
+    --secondary-color: #9e32e5;
+    --background-color: #070815;
+    --background-color-secondary: #070815;
+    --background-color-tertiary: #070815;
+    --text-color: #ffffff;
+    --input-background: #070815;
+    --title-color: #eaeaf8;
+    --input-text: #ffffff;
+}
+
+
+input.mat-input-element {
+    background: var(--input-background);
+    color: var(--input-text);
+}
+
+@use '@angular/material' as mat;
+
+@mixin my-snackbar-theme($theme) {
+  $palette: mat.get-theme-color($theme);
+  @include mat.snack-bar-overrides((
+    container-color: mat.get-color-from-palette($palette, primary),
+    supporting-text-color: white
+  ));
+}
+@include my-snackbar-theme($my-theme);
+
+.snackbar-success {
+    background-color: #4CAF50 !important; /* Verde */
+    color: white !important;
+  }
+  
+  .snackbar-error {
+    background-color: #f44336 !important; /* Vermelho */
+    color: white !important;
+  }
+  
+  .snackbar-warning {
+    background-color: #ff9800 !important; /* Laranja */
+    color: black !important;
+  }
+  
+  .mat-mdc-snack-bar-container {
+    border-radius: 5px !important;
+    font-weight: bold !important;
+    text-align: center !important;
+  }
+  
+  .mat-mdc-snack-bar-action {
+    color: white !important; /* Para o botão "Fechar" ficar sempre branco */
+  }
+
+
+  
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color); 
+    transition: color 0.3s ease-in-out;
+}
+
+.theme-toggle:hover {
+    color: var(--primary-color);
+}
+
+.theme-toggle mat-icon {
+    font-size: 25px; /* Define o tamanho do ícone */
+}
+
+:root, .dark-theme {
+    transition: background-color 0.5s ease-in-out, 
+                color 0.5s ease-in-out, 
+                border-color 0.5s ease-in-out;
+}
