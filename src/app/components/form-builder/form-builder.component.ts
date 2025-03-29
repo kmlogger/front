@@ -36,7 +36,7 @@ import { CodeInputComponent } from '../code-input/code-input.component';
             <mat-form-field *ngIf="field.type !== 'code'" appearance="outline">
               <mat-label>{{ field.label }}</mat-label>
               
-              <!-- 🔹 Campo SEM máscara -->
+             
               <input
                 *ngIf="!field.mask"
                 matInput
@@ -83,7 +83,7 @@ import { CodeInputComponent } from '../code-input/code-input.component';
   styles: [`
       .form-card mat-card {
         background: transparent;
-        border: 2px solid var(--primary-color);
+        border: 2px solid var(--p-primary-400);
         border-radius: 12px;
         backdrop-filter: blur(10px);
         padding: 20px;
@@ -99,7 +99,7 @@ import { CodeInputComponent } from '../code-input/code-input.component';
       color: var(--title-color);
     }
     .mdc-text-field--outlined .mdc-notched-outline {
-    border-color: var(--primary-color) !important;
+    border-color: var(--p-primary-400) !important;
     transition: border-color 0.3s ease-in-out;
     }
 
@@ -138,7 +138,7 @@ import { CodeInputComponent } from '../code-input/code-input.component';
 
     input.mat-input-element {
         background: transparent !important;
-        border-bottom: 2px solid #7B00FF !important;
+        border-bottom: 2px solid var(--p-primary-500) !important;
         color: red !important;
         caret-color: white !important;
         opacity: 1 !important;
@@ -151,7 +151,7 @@ import { CodeInputComponent } from '../code-input/code-input.component';
     }
 
     .mat-form-field-appearance-outline .mat-form-field-outline {
-    border-color: var(--primary-color) !important;
+    border-color: var(--p-primary-400) !important;
     }
 
     .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
@@ -183,11 +183,11 @@ import { CodeInputComponent } from '../code-input/code-input.component';
 
 
     ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
-        color: #7B00FF !important;
+        color: var(--p-primary-500) !important;
     }
 
     button {
-        background: #6200ea;
+        background: var(--p-primary-400);
         color: white !important;
         width: 100%;
         padding: 10px;
@@ -200,7 +200,7 @@ import { CodeInputComponent } from '../code-input/code-input.component';
         flex-direction: column;
         gap: 10px;
         margin-top: 20px;
-        color: var(--primary-color);
+        color: var(--p-primary-400);
     }
   `],
    providers: [provideNgxMask()]

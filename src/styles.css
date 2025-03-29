@@ -5,7 +5,21 @@ html, body {
     overflow: hidden; 
 }
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--background-color) !important;
+  color: var(--text-color);
+  transition: background-color
+}
+
+:root{
+  --p-menubar-background: transparent !important;
+  --p-menubar-border-color: var(--p-primary-400) !important;
+}
+
+.p-menubar-item-link
+{
+  color: var(--p-primary-400) !important;
+}
 
 
 @keyframes glowing-border {
@@ -22,32 +36,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         border-image-slice: 1;
     }
 }
-
-:root {
-    --primary-color: #6200ea;
-    --secondary-color: #6000e770;
-    --background-color: #e4dfdfef;  
-    --background-color-secondary: #c2bcbcec;
-    --background-color-tertiary: #aaa7a7c7;
-    --text-color: #000000;
-    --input-background: #f0f0f0;
-    --title-color: #6200ea;
-    --input-text: #000000;
-}
-
-/* 🌙 Tema Escuro */
-.dark-theme {
-    --primary-color: #9e32e5;
-    --secondary-color: #9e32e5;
-    --background-color: #070815;
-    --background-color-secondary: #070815;
-    --background-color-tertiary: #070815;
-    --text-color: #ffffff;
-    --input-background: #070815;
-    --title-color: #eaeaf8;
-    --input-text: #ffffff;
-}
-
 
 input.mat-input-element {
     background: var(--input-background);
@@ -104,7 +92,7 @@ input.mat-input-element {
 }
 
 .theme-toggle:hover {
-    color: var(--primary-color);
+    color: var(--p-primary-400);
 }
 
 .theme-toggle mat-icon {

@@ -111,7 +111,7 @@ export class ForgotPasswordComponent extends BaseComponent {
     this.authService.forgotPassword(formData.email).subscribe({
       next: (response) => {
         this.showMessage(response, 'success');
-        this.router.navigate(['/forgot-password-activate'], { queryParams: { email: formData.email } });
+        this.navigateToWithParams('/forgot-password-activate', { queryParams: { email: formData.email }});
       },
       error: (error) => this.showMessage(error, 'error')
     });

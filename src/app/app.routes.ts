@@ -16,8 +16,15 @@ export const routes: Routes = [
       { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: 'activate-account', component: ActivateAccountComponent },
       { path: 'forgot-password-activate', component: ActivatePasswordComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: '**', redirectTo: 'login' }
+      { path: '', redirectTo: 'login', pathMatch: 'full' }
     ]
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/routes').then(m => m.routes)
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   }
 ];

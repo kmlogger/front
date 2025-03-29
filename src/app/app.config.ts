@@ -4,11 +4,11 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
 
 import { HttpClientService } from './services/http-client.service';
 import { routes } from './app.routes';
 import { HTTP_CLIENT_SERVICE } from './services/dependecy-injection-factory';
+import MeuPreset from './themes/MeuPreset.component';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +18,10 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {
-          preset: Aura
+          preset: MeuPreset,
+          options: {
+            darkModeSelector: '.modo-escuro'
+        }
       }
     }), 
     provideAnimationsAsync(),
