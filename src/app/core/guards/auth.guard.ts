@@ -1,9 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { HTTP_CLIENT_SERVICE } from '../../services/dependecy-injection-factory';
-import { IHttpClient } from '../../../interfaces/http-client.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +7,34 @@ import { IHttpClient } from '../../../interfaces/http-client.interface';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    @Inject(HTTP_CLIENT_SERVICE) private httpService: IHttpClient,
     private router: Router
   ) {}
 
-  canActivate(): Observable<boolean> {
-    return this.httpService.get(
-      '/user/auth/validate',
-      undefined,         
-      undefined,         
-      true,            
-      true               
-    ).pipe(
-      map(() => true),
-      catchError(() => {
-        this.router.navigate(['/login']);
-        return of(false);
-      })
-    );
+  canActivate(): boolean {
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      this.router.navigate(['/login']);
+      return false;
+    }
+
+    const payload = this.decodeToken(token);
+    const expired = payload?.exp && (Date.now() / 1000) > payload.exp;
+
+    if (expired) {
+      localStorage.removeItem('access_token');
+      this.router.navigate(['/login']);
+      return false;
+    }
+
+    return true;
+  }
+
+  private decodeToken(token: string): any {
+    try {
+      const payload = token.split('.')[1];
+      return JSON.parse(atob(payload));
+    } catch (error) {
+      return null;
+    }
   }
 }

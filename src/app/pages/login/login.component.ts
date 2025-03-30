@@ -94,6 +94,7 @@ export class LoginComponent extends BaseComponent {
     this.authService.login(formData).subscribe({
       next: (response) => 
         {
+          localStorage.setItem('access_token', response.token);
           this.navigateTo('/home')
         },
       error: (error) => this.showMessage(error, 'error') 
