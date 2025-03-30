@@ -31,15 +31,21 @@ export class HttpClientService implements IHttpClient {
     return `${this.apiUrl.replace(/\/$/, '')}/${endpoint.replace(/^\//, '')}`;
   }
 
-  get<T>(endpoint: string, params?: HttpParams | { [param: string]: string | string[] }, customHeaders?: { [key: string]: string }, requireApiKey: boolean = true): Observable<T> {
+  get<T>(
+    endpoint: string,
+    params?: HttpParams | { [param: string]: string | string[] },
+    customHeaders?: { [key: string]: string },
+    requireApiKey: boolean = true,
+    withCredentials: boolean = false
+  ): Observable<T> {
     const url = this.buildUrl(endpoint);
-
+  
     return this.http.get<T>(url, {
       headers: this.getHeaders(customHeaders, requireApiKey),
-      params
+      params,
+      withCredentials 
     }).pipe(catchError(this.handleError));
   }
-
   post<T>(endpoint: string, body: any, customHeaders?: { [key: string]: string }, requireApiKey: boolean = true): Observable<T> {
     const url = this.buildUrl(endpoint);
 

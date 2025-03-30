@@ -94,8 +94,7 @@ export class LoginComponent extends BaseComponent {
     this.authService.login(formData).subscribe({
       next: (response) => 
         {
-          this.showMessage(response.message, 'success');
-          this.navigateTo('/activate-account')
+          this.navigateTo('/home')
         },
       error: (error) => this.showMessage(error, 'error') 
     });

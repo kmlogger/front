@@ -24,3 +24,11 @@
     max-width: 400px;
     padding: 20px;
 }
+
+.auth-container::before,
+.auth-container::after,
+.content-section::before,
+.content-section::after {
+  content: none !important;
+  display: none !important;
+}

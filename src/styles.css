@@ -14,6 +14,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 :root{
   --p-menubar-background: transparent !important;
   --p-menubar-border-color: var(--p-primary-400) !important;
+  --p-form-field-background: transparent !important;
+  --p-card-background: transparent !important;
+  --p-card-color: var(--p-primary-400) !important;
+
 }
 
 .p-menubar-item-link
