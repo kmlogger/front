@@ -33,8 +33,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
           [form]="form"
           [submitButtonLabel]="'Recuperar Senha'"
           [extraButtons]="extraButtons"
-          (formSubmit)="onForgotPassword($event)">
-          <h2 form-title>Recupere sua senha</h2>
+          (formSubmit)="onForgotPassword($event)"
+          [title]="'Recupere sua Senha'">
         </app-form-builder>
       </div>
     </app-begin-layout>

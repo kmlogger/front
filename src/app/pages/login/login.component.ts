@@ -30,8 +30,8 @@ import { BaseComponent } from '../../shared/base-component/base-component.compon
           [form]="form"
           [submitButtonLabel]="'Entrar'"
           [extraButtons]="extraButtons"
-          (formSubmit)="onLogin($event)">
-          <h2 form-title>Realize o Login e continue Monitorando</h2>
+          (formSubmit)="onLogin($event)"
+          [title]="'Realize o Login e continue Monitorando'">
         </app-form-builder>
       </div>
     </app-begin-layout>

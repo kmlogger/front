@@ -34,8 +34,8 @@ import { CodeInputComponent } from '../../components/code-input/code-input.compo
           [form]="form"
           [submitButtonLabel]="'Reativar'"
           [extraButtons]="extraButtons"
-          (formSubmit)="onActivatePassword($event)">
-          <h2 form-title>Digite o código para reativar sua conta</h2>
+          (formSubmit)="onActivatePassword($event)"
+          [title]="'Digite o código para reativar sua conta'">
           <app-code-input formControlName="code"></app-code-input>
         </app-form-builder>
       </div>

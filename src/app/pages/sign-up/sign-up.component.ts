@@ -23,7 +23,6 @@ import { passwordMatchValidator } from '../../shared/validators/password-match.d
     NgxMaskDirective
   ],
   template: `
-    <app-begin-layout>
       <div class="login-container">
         <div class="logo-container">
           <app-logo></app-logo>
@@ -34,12 +33,14 @@ import { passwordMatchValidator } from '../../shared/validators/password-match.d
           [form]="form"
           [submitButtonLabel]="'Cadastrar'"
           [extraButtons]="extraButtons"
-          (formSubmit)="onSignUp($event)">
-          <h2 form-title>Crie sua conta</h2>
+          (formSubmit)="onSignUp($event)"
+          [title]="'Crie sua conta'">
         </app-form-builder>
       </div>
-    </app-begin-layout>
   `,
+  styles: [`
+      
+    `],
    providers: [provideNgxMask()]
 })
 export class SignUpComponent extends BaseComponent {

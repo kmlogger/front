@@ -15,7 +15,7 @@ import { LogoComponent } from "../../components/logo/logo.component";
           <div class="logo-container">
             <app-logo></app-logo>
           </div>
-          <h2>Ativando sua conta...</h2>
+          <h2>Ativando sua conta..</h2>
         </div>
       </div>
     </app-begin-layout>
@@ -40,7 +40,7 @@ export class ActivateAccountComponent extends BaseComponent implements OnInit {
       const token = params['token'];
 
       if (!email || !token) {
-        this.showMessage("Parâmetros inválidos!", "error");
+        this.showMessage("Invalid Parameters!", "error");
         this.navigateTo('/');
         return;
       }

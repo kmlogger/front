@@ -7,7 +7,7 @@ html, body {
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: var(--background-color) !important;
-  color: var(--text-color);
+  color: var(--p-primary-400);
   transition: background-color
 }
 
@@ -17,7 +17,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
   --p-form-field-background: transparent !important;
   --p-card-background: transparent !important;
   --p-card-color: var(--p-primary-400) !important;
+}
 
+.login-container {
+  flex: column;
+  justify-content: center;
+  align-items: center;
+  width: 200vw;
 }
 
 .p-menubar-item-link
