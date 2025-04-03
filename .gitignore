@@ -1,50 +1,43 @@
-## Angular-specific
-.DS_Store
-node_modules/
-dist/
-out-tsc/
-.tmp/
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
-.angular/cache/
-# IDE files
-.vscode/
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
 .idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# Logs and debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Angular build outputs
-
-package-lock.json
-yarn.lock
-
-# Environment variables
-src/environments/environment.prod.ts
-src/environments/environment.ts
-
-# Compiled TypeScript
-*.js
-*.js.map
-
-# Temporary files
-*.bak
-*.swp
-*.swo
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
 # Miscellaneous
-coverage/
-karma-coverage/
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+.vscode
 
-# VSCode extensions
-.vscode/
-
-# Mac system files
-*.DS_Store
-
-# Angular cache
-.angular/
-
-# Git merge conflict files
-*.orig
+# System files
+.DS_Store
+Thumbs.db
