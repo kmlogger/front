@@ -1,0 +1,32 @@
+<p-megamenu [model]="menuItems" styleClass="custom-megamenu">
+  <ng-template #start>
+    <app-logo-olho></app-logo-olho>
+  </ng-template>
+
+  <ng-template #item let-item>
+    <a
+      pTooltip="{{ item.label }}"
+      tooltipPosition="bottom"
+      class="p-menuitem-link flex align-items-center justify-content-center"
+      [routerLink]="item.routerLink || null"
+      (click)="item.command ? item.command() : null"
+    >
+      <i [ngClass]="item.icon"></i>
+    </a>
+  </ng-template>
+
+  <ng-template #end>
+    <span class="search-container">
+      <input
+        pInputText
+        [(ngModel)]="searchText"
+        placeholder="Search"
+        class="search-input"
+      />
+      <p-avatar
+        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+        shape="circle"
+      />
+    </span>
+  </ng-template>
+</p-megamenu>

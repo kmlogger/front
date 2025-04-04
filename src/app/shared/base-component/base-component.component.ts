@@ -27,6 +27,7 @@ export abstract class BaseComponent {
             this._isDarkTheme = !this._isDarkTheme;
             localStorage.setItem('theme', this._isDarkTheme ? 'dark' : 'light');
             this.applyThemeClass();
+            
         }
     }
 
