@@ -5,6 +5,7 @@ html, body {
     padding: 0;
     height: 100%;
     overflow: hidden; 
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -19,7 +20,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
   --p-form-field-background: transparent !important;
   --p-card-background: transparent !important;
   --p-card-color: var(--p-primary-400) !important;
+  --p-inputtext-color: var(--p-primary-400) !important;
   --p-megamenu-item-link-color: var(--p-primary-400) !important;
+  --p-icon-size: 1.1rem !important;
+  --p-drawer-background: linear-gradient(190deg, rgba(86, 6, 160, 0.85), rgba(52, 6, 107, 0.85)) !important;
+  --p-drawer-border-radius: 16px !important;
 }
 
 

@@ -1,32 +1,43 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, DOCUMENT } from '@angular/common';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ThemeService {
-  private currentTheme: 'light' | 'dark' = 'light';
+  private readonly THEME_KEY = 'theme';
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    if (isPlatformBrowser(this.platformId)) {
-      const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
-      this.setTheme(savedTheme);
-    }
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  isDarkMode(): boolean {
+    if (!isPlatformBrowser(this.platformId)) return false;
+    return localStorage.getItem(this.THEME_KEY) === 'dark';
   }
 
-  setTheme(theme: 'light' | 'dark') {
-    if (isPlatformBrowser(this.platformId)) {
-      this.currentTheme = theme;
-      localStorage.setItem('theme', theme);
-  
-      setTimeout(() => {
-        document.documentElement.classList.toggle('dark-theme', theme === 'dark');
-      }, 100); 
-    }
+  toggleTheme(): boolean {
+    if (!isPlatformBrowser(this.platformId)) return false;
+
+    const isDark = this.isDarkMode();
+    const newTheme = isDark ? 'light' : 'dark';
+
+    localStorage.setItem(this.THEME_KEY, newTheme);
+    this.applyThemeClass(newTheme);
+
+    return newTheme === 'dark';
   }
 
-  toggleTheme() {
-    const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-    this.setTheme(newTheme);
+  applyInitialTheme(): void {
+    const theme = this.isDarkMode() ? 'dark' : 'light';
+    this.applyThemeClass(theme);
+  }
+
+  private applyThemeClass(theme: 'light' | 'dark'): void {
+    const html = this.document.documentElement;
+    html.classList.remove('modo-escuro');
+
+    if (theme === 'dark') {
+      html.classList.add('modo-escuro');
+    }
   }
 }

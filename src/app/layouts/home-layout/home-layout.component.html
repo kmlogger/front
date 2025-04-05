@@ -1,32 +1,64 @@
+<!-- Logo mobile centralizada -->
+<div class="home-layout-header-mobile">
+  <app-logo-olho></app-logo-olho>
+</div>
+
+<!-- Menu principal -->
 <p-megamenu [model]="menuItems" styleClass="custom-megamenu">
+  <!-- INÍCIO: HAMBURGUER + LOGO (apenas desktop) -->
   <ng-template #start>
-    <app-logo-olho></app-logo-olho>
+    <div class="logo-hamburger-container">
+      <button
+        type="button"
+        class="hamburger-button"
+        (click)="toggleSidebar()"
+        aria-label="Abrir menu lateral"
+      >
+        <i class="pi pi-bars"></i>
+      </button>
+      <div class="logo-container-desktop">
+        <app-logo-olho></app-logo-olho>
+      </div>
+    </div>
   </ng-template>
 
+  <!-- ITENS DO MENU -->
   <ng-template #item let-item>
     <a
       pTooltip="{{ item.label }}"
       tooltipPosition="bottom"
-      class="p-menuitem-link flex align-items-center justify-content-center"
+      class="p-menuitem-link flex align-items-center justify-content-center only-icon"
       [routerLink]="item.routerLink || null"
-      (click)="item.command ? item.command() : null"
+      routerLinkActive="active-icon"
+      [routerLinkActiveOptions]="{ exact: true }"
     >
-      <i [ngClass]="item.icon"></i>
+      <i [ngClass]="item.icon" class="menu-icon"></i>
     </a>
   </ng-template>
 
+  <!-- FIM: TOGGLE + PESQUISA -->
   <ng-template #end>
-    <span class="search-container">
-      <input
-        pInputText
-        [(ngModel)]="searchText"
-        placeholder="Search"
-        class="search-input"
-      />
-      <p-avatar
-        image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-        shape="circle"
-      />
-    </span>
+    <div class="search-container">
+      <p-toggleswitch [(ngModel)]="isDarkTheme" (onChange)="toggleTheme()" />
+      <p-iconfield>
+        <p-inputicon styleClass="pi pi-search" />
+        <input type="text" pInputText placeholder="Search" />
+      </p-iconfield>
+    </div>
   </ng-template>
 </p-megamenu>
+
+<!-- SIDEBAR MOBILE -->
+<p-sidebar [(visible)]="sidebarVisible" [modal]="true" position="left" styleClass="mobile-sidebar">
+  <ul class="mobile-menu">
+    <li *ngFor="let item of menuItems">
+      <a [routerLink]="item.routerLink" (click)="sidebarVisible = false">
+        <i [ngClass]="item.icon"></i> {{ item.label }}
+      </a>
+    </li>
+  </ul>
+</p-sidebar>
+
+<main class="home-layout-content">
+  <router-outlet></router-outlet>
+</main>

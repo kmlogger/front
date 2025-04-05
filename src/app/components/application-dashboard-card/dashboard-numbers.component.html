@@ -1,0 +1,18 @@
+<div
+  class="dashboard-card-wrapper"
+  (click)="onCardClick()"
+  pTooltip="{{ tooltip }}"
+  tooltipPosition="top"
+>
+  <app-widget-card
+    [showFooter]="false"
+    [showHeader]="false"
+    wrapperClass="dashboard-card"
+    contentClass="dashboard-content"
+  >
+    <div class="dashboard-inner">
+      <div class="dashboard-title" [ngClass]="textColorClass">{{ title }}</div>
+      <div class="dashboard-count" [ngClass]="textColorClass">{{ count }}</div>
+    </div>
+  </app-widget-card>
+</div>
